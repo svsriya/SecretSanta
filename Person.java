@@ -1,41 +1,77 @@
-public class Person{
-	
+public class Person
+{	
 	private String name;
-	private int phoneNumber;
-	private boolean availability = true;
-
+	private String phoneNumber; //tell user not to input spaces or parenthesis
+	private boolean hasSanta;
+	private Person reciever;		//reciever of the gift
+	
+	public static int numPeople = 0;	//keeps track of the number of secret santa participants
 	
 	//***************
 	//we should check if we get the same number
 	//so maybe a global arraylist of numbers and 
 	//check each time a number is added that it is not 
 	//in that global arraylist already
-	public Person(String n, int phone){
+	public Person()
+	{
+		//does nothing
+		name = "";
+		phoneNumber = "";
+		hasSanta = false;
+	}
+	
+	public Person(String n, String phoneID)
+	{
 		this.name = n;
-		this.phoneNumber = phone;
+		this.phoneNumber = phoneID;
+		this.hasSanta = false;
+		numPeople++;				//incremented each time a person is entered
 	}
-	/*should not need this at all. we need to store the number
-	public Person(String n){
-		this.name=n;
-		this.phoneNumber = -1;
-	}
-	*/
-	public String getName(){
+	
+	public String getName()
+	{
 		return name;
-	}
-
-	public int getPhoneNumber(){
+	}	
+	
+	public String getPhoneID()
+	{
 		return phoneNumber;
 	}
 
-	public boolean isAvailable(){
-		return availability;
+	public boolean hasSanta()
+	{
+		return hasSanta;
 	}
 
-	public void changeAvailability(){
-		availability = !availability;
+	public void changeStatus()
+	{
+		hasSanta = true;
 	}
-
-
-
+	
+	public void setReciever( Person r )
+	{
+		reciever = r;
+	}
+	
+	public Person getReciever()
+	{
+		return reciever;
+	}
+	
+	public String toString()
+	{
+		return "Name: " + name + "\nPhone Number: " + phoneNumber;
+	}
+	/*
+	public boolean equals( Object o )
+	{
+		if( o instanceof Person )
+		{
+			Person test = (Person)o;
+			if( ( this.getPhoneID() ).equals( test.getPhoneID() ) && )
+				
+				
+		}
+	}
+	*/
 }
